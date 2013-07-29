@@ -8,8 +8,8 @@ Gem::Specification.new do |gem|
   gem.version       = VelocityCheck::VERSION
   gem.authors       = ["Michael Fairley"]
   gem.email         = ["michael.fairley@getbraintree.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
+  gem.description   = %q{Velocity checking}
+  gem.summary       = %q{Lets you know if something is happening too often}
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($/)

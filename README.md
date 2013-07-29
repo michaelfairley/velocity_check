@@ -1,6 +1,6 @@
 # VelocityCheck
 
-TODO: Write a gem description
+Lets you know if something is happening too often.
 
 ## Installation
 
@@ -18,7 +18,21 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+SNEEZE_CHECK = VelocityCheck.new(:name => "sneeze", :limit => 10, :time_period => 600, :client => DALLI_CLIENT)
+
+class Person
+  def initialize(name)
+    @name = name
+  end
+
+  def sneeze!
+    if SNEEZE_CHECK.check(@name)
+      puts "#{@name} has sneezed too much recently"
+    end
+  end
+end
+```
 
 ## Contributing
 
