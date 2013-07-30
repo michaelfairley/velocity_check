@@ -22,7 +22,7 @@ class VelocityCheck
     full_key = "#{@name}_#{key}"
 
     # It would nice if we could incr + touch, but touch is buggy
-    # in most versions of memecached (and doesn't even exist in
+    # in most versions of memcached (and doesn't even exist in
     # debian squeeze's version).
     previous = @client.get(full_key) || 0
     @client.set(full_key, previous + 1, @time_period)
