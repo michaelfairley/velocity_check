@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 describe VelocityCheck do
+  before(:all) do
+    Dalli.logger.level = Logger::FATAL
+  end
+
   let(:client) { Dalli::Client.new("127.0.0.1:#{ENV.fetch('BOXEN_MEMCACHED_PORT', 11211)}") }
   before(:each) { client.flush }
 
@@ -111,6 +115,12 @@ describe VelocityCheck do
       10.times { checker.check("test") }
       checker2.check("test").should be_false
       checker.check("test").should be_true
+    end
+
+    it "fails open if there's an error talking to memcached" do
+      checker = VelocityCheck.new(options.merge(:client => Dalli::Client.new('127.0.0.1:5315')))
+
+      100.times { checker.check("test").should be_false }
     end
   end
 end

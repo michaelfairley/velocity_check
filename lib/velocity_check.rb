@@ -28,5 +28,7 @@ class VelocityCheck
     @client.set(full_key, previous + 1, @time_period)
 
     previous >= @limit
+  rescue Dalli::RingError
+    false
   end
 end
