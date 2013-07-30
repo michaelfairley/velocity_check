@@ -10,7 +10,7 @@ class VelocityCheck
 
     known_options = [:name, :limit, :time_period, :client]
     unknown_options = options.keys - known_options
-    raise ArgumentError, "Unknown options: #{unknown_options.sort.join(', ')}"  unless unknown_options.empty?
+    raise ArgumentError, "Unknown options: #{unknown_options.map(&:to_s).sort.join(', ')}"  unless unknown_options.empty?
 
     @name = options[:name]
     @client = options[:client]
