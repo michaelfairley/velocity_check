@@ -19,7 +19,12 @@ Or install it yourself as:
 ## Usage
 
 ```ruby
-SNEEZE_CHECK = VelocityCheck.new(:name => "sneeze", :limit => 10, :time_period => 600, :client => DALLI_CLIENT)
+SNEEZE_CHECK = VelocityCheck.new(
+  :name => "sneeze",
+  :limit => 10,
+  :time_period => 600,
+  :client => DALLI_CLIENT,
+)
 
 class Person
   def initialize(name)
